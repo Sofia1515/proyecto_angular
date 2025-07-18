@@ -1,6 +1,9 @@
 <h1>Carrito de compras</h1>
-<ul>
-    <li *ngFor="let peli of (carroLista$ | async)">
-        {{peli.nombre}}: {{peli.quantity}}
+<ul class="carrito-lista">
+    <li *ngFor="let peli of (carroLista$ | async)" class="carrito-item">
+        <span class="peli-nombre">{{ peli.nombre }}</span>
+        <span class="peli-cantidad">Cantidad: {{ peli.quantity }}</span>        
+        <button class="btn-eliminar" (click)="eliminar(peli)">Eliminar</button>
     </li>
 </ul>
+

@@ -17,6 +17,12 @@ export class PeliCarritoComponent implements OnInit{
     this.carroLista$ = carro.carroLista.asObservable();
   }
 
+   eliminar(peli: Peli): void {
+    this.carro.restarCant(peli);
+  }
+
+
+
 
 
   ngOnInit(): void { }

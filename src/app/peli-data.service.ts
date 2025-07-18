@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,9 +5,5 @@ import { Injectable } from '@angular/core';
 })
 export class PeliDataService {
 
-  constructor(private http: HttpClient) { }
-
-  public getAll(){
-
-  }
+  constructor() { }
 }

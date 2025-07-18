@@ -26,6 +26,24 @@ export class PeliCarroService {
     this.carroLista.next(this._carroLista);
   }
 
+  restarCant(peli: Peli): void {
+  let item2: Peli | undefined = this._carroLista.find((vp) => vp.nombre == peli.nombre);
+  if (item2) {
+    if (item2.quantity > 1) {
+      item2.quantity--; // resta de a uno
+    } else {
+      // si queda en 1, y se va a restar, entonces lo eliminamos
+      let index = this._carroLista.indexOf(item2);
+      if (index > -1) {
+        this._carroLista.splice(index, 1);
+      }
+    }
+    console.log(this._carroLista.length);
+    this.carroLista.next(this._carroLista);
+  }
+}
+
+
 }
 /*tambien puedo poner 
 let item: this.carroLista.find((v1) => v1.nombre == peli.nombre);
