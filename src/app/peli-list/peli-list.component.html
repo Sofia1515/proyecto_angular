@@ -1,0 +1,30 @@
+<h1>Peliculas que podes encontrar</h1>
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Genero</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Cantidad</th>
+            <th>Comprar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let peli of pelis" [ngClass]="{'descuento': peli.descuento}">
+            <td><img width="90" class="img-thumbnail"
+                [src]="peli.imagen" [alt]="peli.nombre"></td>
+            <td>{{peli.nombre}}</td>
+            <td>{{peli.genero}}</td>
+            <td>{{peli.precio | currency }}</td>
+            <td><span class="badge text-bg-warning" *ngIf="peli.stock==0">SIN STOCK</span></td>
+            <td>
+                <app-input-entero [(quantity)]="peli.quantity" [max]="peli.stock" *ngIf="peli.stock" (maxReached)="maxReached($event)"></app-input-entero> 
+            </td>
+            <td>
+                <button class="btn btn-primary" (click)="agregarAlCarro(peli)">Comprar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
