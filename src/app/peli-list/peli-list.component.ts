@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Peli } from './peli';
 import { PeliCarroService } from '../peli-carro.service';
+import { PeliDataService } from '../peli-data.service';
 
 @Component({
   selector: 'app-peli-list',
@@ -39,7 +40,9 @@ export class PeliListComponent{
   }
 ];
 
-  constructor(private carro: PeliCarroService){
+  constructor(
+    private carro: PeliCarroService,
+    private pelisDataService: PeliDataService) {
   }
 
   ngOnInit(): void {
@@ -47,6 +50,8 @@ export class PeliListComponent{
 
   agregarAlCarro(peli: Peli): void {
     this.carro.agregarAlCarro(peli);
+    peli.stock -= peli.quantity;
+    peli.quantity = 0;
   }
 
   maxReached(mensaje: string): void {
